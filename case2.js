@@ -34,8 +34,14 @@ var comment = [
             commentContent: 'Halooo'
     }
  ]
- for (var i = 1; i < 8; i++) {
-    console.log(comment.commentContent);
-    console.log(i)
+ function countComment(comment) {
+  let count = 0;
+  for (let i = 0; i < comment.length; i++) {
+    count++;
+    if (comment[i].replies) {
+      count += countComment(comment[i].replies);
+    }
   }
-   
+  return count;
+}
+console.log(countComment(comment));
